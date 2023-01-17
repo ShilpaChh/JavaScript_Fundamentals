@@ -11,7 +11,7 @@ It's a great second language to learn, as it introduces many new language concep
 found in languages such as Ruby. It will also let you reinforce concepts you've already
 learned.
 
-In this first module, you'll learn the basics of Javascript by pairing through a series of
+In this module, you'll learn the basics of Javascript by pairing through a series of
 exercises, either building on previous knowledge or discovering new concepts. You'll then
 build a more complex coding challenge using all of those new concepts.
 
