@@ -71,29 +71,29 @@ We can try the following code to test the API and get weather for a given locati
 ```javascript
 // file: index.js
 
-const { get } = require('callback-fetch');
 const apiKey = 'a3d9eb01d4de82b9b8d0849ef604dbed'; // include our key
 const city = 'London';
 const apiUrl = `http://api.openweathermap.org/data/2.5/weather?units=metric&q=${city}&appid=${apiKey}`;
 
 let weatherData = null;
 
-get(apiUrl, (response) => {
-  weatherData = JSON.parse(response.body);
-  console.log(weatherData);
-});
+fetch(apiUrl)
+  .then((response) => response.json())
+  .then((weatherData) => {
+    console.log(weatherData)
+  });
 
 console.log('Requesting weather data');
 ```
 
 Let's have a look at the above code example together:
- * First, we're building the URL to call with `get`. This URL contains our API key (so the
+ * First, we're building the URL to call with `fetch`. This URL contains our API key (so the
    server on the other end can "know" it's our account requesting the API - and who to
    charge for it), and the city we want to get weather data for.
  * The *callback* function passed to `then` will be executed once the response is
-   received. We then use `JSON.parse(response.body)` to transform the JSON string received
-   into a JavaScript *object*, that we assign to `weatherData`.
- * We can use `console.log` to print the object on the terminal and inspect it.
+   received. We then use `response.json()` to transform the response received
+   into a JavaScript *object*.
+ * We use `console.log` to print the object on the terminal and inspect it.
 
 If you run the file above with `node index.js`, you should see a similar output in your
 terminal:
@@ -145,14 +145,17 @@ somewhere.
 
 ## Challenge
 
-1. Implement the class `WeatherClient` that fetches the current weather for a given city
-   using `get`. It should also accept a callback function, which will get called once the
-   data has been received and parsed to an object:
+1. Implement the class `WeatherClient`, with a method `fetchWeatherData` that
+   fetches the current weather for a given city using `fetch`. It should also
+   return a promise, so that we can use the data once it has been received and
+  parsed into an object.
 
+Example usage:
 ```js
 const client = new WeatherClient();
 
-client.fetchWeatherData('London', (weatherData) => {
+client.fetchWeatherData('London').then((weatherData) => {
+  console.log(`Weather data for ${weatherData.name}:`)
   console.log(weatherData);
 });
 ```
@@ -162,18 +165,22 @@ client.fetchWeatherData('London', (weatherData) => {
    for a given city. Make sure the dependency on `WeatherClient` is mocked.
 
 ```js
+// in node REPL
+
 const client = new WeatherClient();
-const weather = new Weather(api);
+const weather = new Weather(client);
 
-weather.fetch('Bristol');
-
+weather.load('Bristol');
+// then, after some time
 weather.getWeatherData();
 ```
 
 You'll now if it works if (in order of important to less important):
-  * The code above works and you get the correct weather data from `getWeatherData()`.
+  * The code above works in the REPL, and you get the correct weather data from
+    `getWeatherData()`.
   * Your tests pass.
-  * You can break the class `WeatherClient` and your unit tests for `Weather` still pass.
+  * You can break the class `WeatherClient` and your unit tests for `Weather`
+    still pass.
 
 ## Make it yours!
 
@@ -181,8 +188,9 @@ Well done for completing this module — if you're willing to go further, there'
 additional (bonus) section where you'll build a small web server](./07_web_server.md) to
 run the Thermostat class you worked on earlier, using the express library. Alternatively,
 have a look at the additional steps below — or ask your coach for some more challenge!
-
- * **User-friendly breakdown of the weather in the terminal** — implement a new method
+  * **Compare the weather of two cities** - Implement a new method `.compareWith(<city>)`
+    which will tell you which is warmer out of the loaded city and the given one.
+  * **User-friendly breakdown of the weather in the terminal** — implement a new method
    `displayWeather()` that prints a nicely formatted breakdown of the weather for the
    given city, for example:
     ```
@@ -192,7 +200,8 @@ have a look at the additional steps below — or ask your coach for some more ch
     Feels like:   16.0
     Humidity:     64%
     ```
-  * **Extract the method above into a new class `WeatherView`**, updating the unit tests
+
+  * **Extract the method above into a new class `WeatherUI`**, updating the unit tests
     of `Weather` to mock the dependency on the new class.
   * **Create a command-line interface to ask the program user to enter a city name**,
     before fetching and displaying the weather information for this city. [You can use the

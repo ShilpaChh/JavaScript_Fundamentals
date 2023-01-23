@@ -1,320 +1,214 @@
-# A Github client
+# Calling External APIs
 
 ## Objectives
+- Understand that for a server, the API is the definition of
+    - What HTTP requests the server responds to
+    - How you can expect the server to respond to a HTTP request
+- How we can use JavaScript's built-in `fetch` method to interact with APIs
+- Write a class that utilises an external API
 
- * Implement a class that fetches data from a remote API.
-
-## On Sending HTTP requests
-
-You've previously learned how we can pass "callback" functions to other
-functions, with the example of `setTimeout`. This is an example of
-**asynchronous programming** - instead of making the whole program wait for a
-task to complete, we give a callback function to be executed later, while the
-rest of the program can execute normally.
-
-Another example of asynchronous programming in JavaScript is when we need to
-send HTTP requests to a web server. Receiving the response will take some time (even if
-our connection is really fast!), so we don't want the program to block until it
-is received.
+## Refresher - HTTP Requests
+This rest of this module relies on having a good understanding of HTTP requests, what they are, what we use them for.
+If you need a refresher on this topic, please take a look back at the [HTTP Bites from the Web Applications module](https://github.com/makersacademy/web-applications/blob/main/http_bites/01_intro_to_http.md).
 
 ## What is an API?
+API stands for Application Programming Interface, and is essentially _how we interact with a program using code_. This means that every program and library you have used so far, such as Sinatra, Node, and Jest, all provide an API, which defines _how we use them_. For example, `describe` and `it` are both part of Jest's API. The `fs` module is an API provided by Node, for interacting with the file system.
 
-When a web server allows a client to send HTTP requests (GET, POST, or other) to
-its URLs to fetch, create or update data, it is also called an API. The Github
-API is a good example of a "public" API - by sending HTTP requests to it, we are
-able to interact with Github, but programmatically, rather than with a user
-interface.
+For Jest and Node, we can interact with their APIs directly, as the code is running on our machine, alongside the rest of our project. We just import the functions and write code.
 
-We can have a look at the [URL for Ruby's Sinatra Github
-repo.](https://api.github.com/repos/sinatra/sinatra) If you open this link in
-your browser, you'll see only data (in the JSON format):
+For a program running on an _external server_ however, the _only way_ we have to interact with it is through HTTP requests, sent over the internet.
 
-```json
-{
-  "id": 106995,
-  "node_id": "MDEwOlJlcG9zaXRvcnkxMDY5OTU=",
-  "name": "sinatra",
-  "full_name": "sinatra/sinatra",
-  "private": false,
-  // (truncated for brevity)
-}
+As a result, **for applications running on a server, the API is the definition of _what HTTP requests_ the server will respond to, and _the format of the response_ it will send back**. Read this over a few times, it's really important!
+
+As a result, the term "API" is commonly used to refer to any external server which can be interacted with, through HTTP requests. When we create these HTTP requests, we are "calling an API".
+
+## Interacting with an API
+Interacting with an API means sending a HTTP request to a server and receiving some response data. Github has an API which allows us to find out information about any Github repo we are interested in.
+
+For example, one way of interacting with the Github API is to do a `GET` request to `https://api.github.com/repos/<user>/<reponame>`, where `<user>` and `<reponame>` are replaced with a github username and repo name respectively.
+
+As we've seen before, we can use the command-line tool `curl` to perform get requests. For example, if we wanted to find out information about the repo for esbuild, we might write:
+```sh
+curl https://api.github.com/repos/evanw/esbuild
 ```
 
-## Using the `callback-fetch` package
+Have a go now. You should see a long list of data in [JSON format](https://developer.mozilla.org/en-US/docs/Glossary/JSON). JSON stands for JavaScript Object Notation, and is simply a way of writing a JavaScript object as a string.
 
-We'll use the package `callback-fetch` to send HTTP requests from our JavaScript program.
+Another method of easily performing GET requests is simply to visit the address in your browser. See what happens if you click this link: https://api.github.com/repos/evanw/esbuild
 
-Initialise a new project directory and run the following command to install the
-package.
+You've just used two methods of creating HTTP requests to interact with an API. But the real power behind APIs comes when we write code which can interact with them. We need to find a way to send HTTP requests directly from our code!
 
-```
-$ npm add callback-fetch
-```
-
-In the same directory, create a file named `githubRequest.js` and write the
-following code:
-
-```javascript
-// file: githubRequest.js
-
-// Load the `get` function.
-const { get } = require('callback-fetch');
-
-// Create a "handler" callback function.
-const handleReceivedResponse = (response) => {
-  console.log(response.body);
-}
-
-const url = 'https://api.github.com/repos/sinatra/sinatra';
-
-// Call `get` and provide the handler callback function.
-// This will get called by `get` when the response is received.
-get(url, handleReceivedResponse);
-```
-
-We can also rewrite the above using a shorter version,
-by defining the "handler" function (the callback) as an anonymous function:
+## Enter Fetch
+`fetch` is a function built into JavaScript for creating HTTP requests. In its most basic form, we pass `fetch` a URL, and it will perform a GET request to that URL:
 
 ```js
-get(url, (response) => {
-  console.log(response.body);
-});
+fetch('https://api.github.com/repos/evanw/esbuild') // Sends a GET HTTP request to the Github API
 ```
 
-[You might remember diagrams from the section on callbacks](../bites/08_callbacks.md#asynchronous-programming), where we made the difference between "immediate" tasks and asynchronous tasks. Here is a similar diagram illustrating what happens when the code above is run:
+We can also use it for creating HTTP requests with other methods, such as POST, but we'll cover that later on.
 
-![](../resources/got-http-request-example.png)
+`fetch` is _asynchronous_, which means that it takes some time to complete. We don't want our program to freeze while the HTTP request completes, and so any code which relies on waiting for the data needs to be attached as a _callback_. 
 
-## Converting JSON to an Object
+(If you need a refresher on what asynchronous programming is, take a look back at the [Callbacks Bite](https://github.com/makersacademy/javascript-fundamentals/blob/main/bites/08_callbacks.md) from earlier in the module.)
 
-If you've run the program above, you'll see we received the same data seen
-previously on the browser. Good! However it's a bit messy and hard to read.
 
-What we can do is *convert* the string data into a JavaScript *object* so it is
-formatted properly. We can do this using `JSON.parse`:
+`fetch` returns a Promise, which we can attach callbacks to using the `.then` method. Don't worry too much about Promises for now, just know that whenever you see `.then`, you're dealing with a Promise.
+
+```js
+fetch('https://api.github.com/repos/evanw/esbuild')
+  .then((response) => response.json())
+  .then((data) => console.log(data));
+
+console.log('End of File');
+```
+
+What do you think you will see if you ran this code? Write down your prediction or discuss with your pair partner. Then try running the code. Is the result what you expected?
+
+There's a lot going on here, so let's go through it step by step:
+1. `fetch` sends a GET HTTP request to the github API.
+2. Because HTTP requests _take time_, we have use a _callback_ to attach any functionality that we want to happen _after_ the request completes. We can do this using the `.then` method.
+3. We pass our first callback, which will take the response to the HTTP request, and decode it from JSON into a JavaScript object, by calling `.json()`
+4. We pass our second callback which will take the resulting data, and log it to the console.
+5. We log "End of File" to the console.
+6. The HTTP request completes, and our callbacks run, logging the data to the console.
+
+## Challenge - Hitting the PokéApi
+We're going to use the publicly available [Pokémon API](https://pokeapi.co/) to create a Pokédex app, where we can store a list of Pokémon we have caught, in our quest to be [the very best, like no one ever was](https://youtu.be/6xKWiCMKKJg).
+
+- Create a file, `api.js` which exports a function `fetchPokemon`. This function should:
+  - Take the name of a Pokémon as an argument
+  - Use `fetch` to make a HTTP request to `https://pokeapi.co/api/v2/pokemon/<pokemonname>`
+  - Once the fetch has completed, _then_ convert the response to JSON
+  - Once the response is converted to JSON, _then_ log out the data.
 
 ```javascript
-const stringValue = '{ "name": "John" }';
-const objectValue = JSON.parse(stringValue);
+// in node
 
-console.log(objectValue); // { name: 'John' }
+const fetchPokemon = require('./api.js')
+fetchPokemon('pikachu')
 
-// We can access properties like a regular JS object
-console.log(objectValue.name);
+// This should log:
+// {
+//   abilities: [
+//     { ability: [Object], is_hidden: false, slot: 1 },
+//     { ability: [Object], is_hidden: true, slot: 3 }
+//   ],
+//   base_experience: 112,
+//   forms: [
+//     {
+//       name: 'pikachu',
+//       url: 'https://pokeapi.co/api/v2/pokemon-form/25/'
+//     }
+//   ],
+//   height: 4,
+//   held_items: [
+//     { item: [Object], version_details: [Array] },
+//     { item: [Object], version_details: [Array] }
+//   ],
+//   id: 25,
+//   (etc...)
+// }
 ```
 
-## Exercise 
+## Challenge - Finishing the Pokédex
+Currently the API is returning a huge amount of data, most of which we don't care about. Let's keep only the info we want.
 
-1. Modify the code in `githubRequest.js` so it converts the received response
-   body to an object, using `JSON.parse`, and prints it.
+### 1. Update `fetchPokemon` 
+Update `fetchPokemon` so that:
+  - It returns a Promise
+  - Instead of `console.log`ing the Pokémon data, we instead use it to create and return a new object, containing the following fields:
+    - `name`, the name of the Pokémon
+    - `id`, the id number of the Pokémon
+    - `height`
+    - `weight`
+    - (Bonus) `types`, what types the Pokémon is. This should be an array, such as `['electric']` or `['fire', flying']`
 
-You should get the following output (some part was omitted for clarity):
+```js
+// in node
 
-```
-node githubRequest.js
+const fetchPokemon = require('./api')
+fetchPokemon('charizard')
+  .then((pokemon) => console.log(pokemon))
 
-{
-  id: 106995,
-  node_id: 'MDEwOlJlcG9zaXRvcnkxMDY5OTU=',
-  name: 'sinatra',
-  full_name: 'sinatra/sinatra',
-  private: false,
-  owner: {
-    login: 'sinatra',
-    id: 8312,
-    node_id: 'MDEyOk9yZ2FuaXphdGlvbjgzMTI=',
-  (...)
-  (...)
-}
+// This should log:
+// {
+//   name: 'charizard',
+//   id: 6,
+//   height: 17,
+//   weight: 905,
+//   types: ['fire', 'flying']
+// }
 ```
 
 <details>
-<summary>Reveal suggested solution</summary>
+<summary>Hint:</summary>
 
-```javascript
-const { get } = require('callback-fetch');
-
-const handleReceivedResponse = (response) => {
-  const responseObject = JSON.parse(response.body);
-  console.log(responseObject);
+- `fetch` and `.then` both return Promises, so it should be a very small change to make sure that `fetchPokemon` is returning a Promise.
+- `(response) => response.json()` is a shorthand for 
+```js
+(response) => {
+  return response.json()
 }
-
-get('https://api.github.com/repos/sinatra/sinatra', handleReceivedResponse);
 ```
+so if you want to use multiple lines of code in your callback, such as for creating a new JS object and giving it keys and values, then returning it, you will probably want to use the format with the `{}` braces.
 </details>
 
-## Exercise
+### 2. Testing `fetchPokemon`
+Create a test file for our `fetchPokemon` method.
+  - You may want to refer to the [Testing Asynchronous Code pill](../pills/testing_asynchronous_code.md).
+  - Make sure your code passes the test that you write.
 
-Create a function `fetchJson` (in `fetchJson.js`) which accepts one URL, and one
-callback function as arguments.
-
-It should send an HTTP request using `get` to the URL, and calls the given
-function with the received response's data. This data should be parsed from JSON
-into a plain JavaScript object.
-
-**Note:** When writing tests for asynchronous functions, you need to be careful
-that the test isn't completing before your `expect` assertions have executed.
-See the _additional resources_ at the bottom of the page for more info.
+<details>
+<summary>Suggested solution</summary>
 
 ```js
-// In node
+// inside api.test.js
+const fetchPokemon = require('./api')
 
-const fetchJson = require('./fetchJson');
-
-fetchJson('https://jsonplaceholder.typicode.com/todos', (response) => {
-  console.log(response);
-})
-
-// This should log
-// (after a few moments, depending on your network connection):
-//
-// [
-//   {
-//     "userId": 1,
-//     "id": 1,
-//     "title": "delectus aut autem",
-//     "completed": false
-//   },
-//   {
-//     "userId": 1,
-//     "id": 2,
-//     "title": "quis ut nam facilis et officia qui",
-//     "completed": false
-//   },
-//   (...)
-// ]
-```
-
-## Exercise 
-
-Create a function `fetchRepositoryInfo` (in `fetchRepositoryInfo.js`) which
-  * fetches repository data from Github's API
-  * calls the given callback with the data it receives from the API (as a JS
-    object):
-
-```js
-// In node
-
-const fetchRepositoryInfo = require('./fetchRepositoryInfo');
-
-fetchRepositoryInfo('sinatra/sinatra', (receivedResponse) => {
-  console.log(receivedResponse);
-});
-
-// This should log:
-//
-// {
-//   id: 106995,
-//   node_id: 'MDEwOlJlcG9zaXRvcnkxMDY5OTU=',
-//   name: 'sinatra',
-//   full_name: 'sinatra/sinatra',
-//   private: false,
-//   owner: {
-//     login: 'sinatra',
-//     id: 8312,
-//     node_id: 'MDEyOk9yZ2FuaXphdGlvbjgzMTI=',
-//   (...)
-//   (...)
-// }
-```
-
-
-## Challenge
-
-1. Implement a class `GithubClient` (in `githubClient.js`) with a method
-   `fetchRepositoryData` which:
-    * fetches repository data from Github's API.
-    * calls the given callback with the received data (after transforming the
-      JSON into a JavaScript object).
-
-```js
-// In node
-
-const GithubClient = require('./githubClient');
-
-const client = new GithubClient();
-
-client.fetchRepositoryData('sinatra/sinatra', (repositoryData) => {
-  console.log(repositoryData);
-});
-
-// This should log:
-//
-// {
-//   id: 106995,
-//   node_id: 'MDEwOlJlcG9zaXRvcnkxMDY5OTU=',
-//   name: 'sinatra',
-//   full_name: 'sinatra/sinatra',
-//   private: false,
-//   owner: {
-//     login: 'sinatra',
-//     id: 8312,
-//     node_id: 'MDEyOk9yZ2FuaXphdGlvbjgzMTI=',
-//   (...)
-//   (...)
-// }
-```
-
-2. Test-drive a class `Github` which has the following behaviour:
-
-```js
-const client = new GithubClient();
-
-// We inject the instance of `GithubClient`:
-const github = new Github(client);
-
-// This method will delegate to `GithubClient.fetchRepositoryData()`
-github.fetch('sinatra/sinatra');
-
-// And after a few moments, this should return a JS object with the repo information.
-github.getRepoData();
-```
-
-## Mocking the `GithubClient` class
-
-In unit tests for the `Github` class, we should now mock the dependency on
-`GithubClient`. Below is one way we can do it.
-
-```js
-// file: github.test.js
-
-describe('Github', () => {
-  it('gets the repo data fetched by the GithubClient class', () => {
-
-    // 1. We mock the implementation of the Client class
-    const mockedClient = {
-      // 2. It has a method `fetchRepositoryData`...
-      fetchRepositoryData: (repoName, callback) => {
-        // 3. ...which calls the given callback function
-        callback({
-          name: 'sinatra/sinatra',
-          description: 'Some fake description'
-        });
-      }
-    }
-
-    // 4.  We can now call
-    //    `mockedClient.fetchRepositoryData('repo-name', callbackFunction)`
-    //     and get the expected behaviour (our callbackFunction will be called 
-    //     with the fake repo data)
-
-    const github = new Github(mockedClient);
-
-    // 5. The mocked implementation will be called instead of the real one
-    github.fetch('sinatra/sinatra');
-    
-    // 6. We should get the fake repo data by calling `github.getRepoData()`
-    expect(github.getRepoData()).toEqual({
-      name: 'sinatra/sinatra',
-      description: 'Some fake description'
-    })
+describe('fetchPokemon', () => {
+  it('returns a promise of the useful pokemon data', (done) => {
+    fetchPokemon('charizard')
+      .then((pokemon) => {
+        expect(pokemon.id).toEqual(6);
+        done();
+      });
   });
 });
 ```
+</details>
+
+### 3. Creating the Pokédex
+
+Test-drive a `Pokedex` class, that has two methods, `catch` and `all`, with the following behaviour:
+
+```js
+// in the node REPL
+
+const pokedex  = new Pokedex();
+pokedex.catch('pikachu'); // Adds pikachu to the pokedex
+// then, after some time has passed...
+pokedex.catch('jigglypuff'); // Adds jigglypuff to the pokedex
+// then, after some time has passed...
+pokedex.all(); // returns an array of the pokemon in the pokedex
+```
+
+## Summary
+_Phew!_ That was a lot! Let's recap. 
+
+By now, you should know:
+- What an API is.
+- How we can interact with APIs, using the terminal, browser, and JavaScript.
+- That some operations take time to complete, and are asynchronous.
+- Some asynchronous operations, like `fetch`, return something called a Promise
+- Promises have a `.then` method, which allows us to say what we want to do _once the operation has completed_, by passing a _callback_.
+- Because asynchronous operations take time to complete, we need to write our tests slightly differently when using them.
+
+If you're fuzzy on any of these points, reread the material in this section, or send a question to your cohort slack channel or coach.
 
 ## Additional resources
  * [Testing Asynchronous Code - Jest Docs](https://jestjs.io/docs/asynchronous)
  * [Testing Asynchronous Code - Pill](../pills/testing_asynchronous_code.md)
+ * [MDN fetch docs](https://developer.mozilla.org/en-US/docs/Web/API/fetch)
 
 [Next Challenge](06_weather_api.md)
 
