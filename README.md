@@ -52,7 +52,7 @@ packages and remote APIs.
 2. [A Search function](./challenges/02_search_function.md)
 3. [A Shopping basket](./challenges/03_shopping_basket.md)
 4. [A Thermostat](./challenges/04_thermostat.md)
-5. [A Github client](./challenges/05_calling_apis.md)
+5. [A Pokédex](./challenges/05_calling_apis.md)
 6. [A Weather client](./challenges/06_weather_api.md)
 7. [A Web server](./challenges/07_web_server.md)
 
