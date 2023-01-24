@@ -1,7 +1,7 @@
 # Calling External APIs
 
 ## Objectives
-- Understand that for a server, the API is the definition of
+- Explain that for a server, the API is the definition of
     - What HTTP requests the server responds to
     - How you can expect the server to respond to a HTTP request
 - How we can use JavaScript's built-in `fetch` method to interact with APIs
@@ -12,11 +12,7 @@ This rest of this module relies on having a good understanding of HTTP requests,
 If you need a refresher on this topic, please take a look back at the [HTTP Bites from the Web Applications module](https://github.com/makersacademy/web-applications/blob/main/http_bites/01_intro_to_http.md).
 
 ## What is an API?
-API stands for Application Programming Interface, and is essentially _how we interact with a program using code_. This means that every program and library you have used so far, such as Sinatra, Node, and Jest, all provide an API, which defines _how we use them_. For example, `describe` and `it` are both part of Jest's API. The `fs` module is an API provided by Node, for interacting with the file system.
-
-For Jest and Node, we can interact with their APIs directly, as the code is running on our machine, alongside the rest of our project. We just import the functions and write code.
-
-For a program running on an _external server_ however, the _only way_ we have to interact with it is through HTTP requests, sent over the internet.
+API stands for Application Programming Interface, and is essentially _how we interact with a program using code_. For a program running on an _external server_ however, the _only way_ we have to interact with it is through HTTP requests, sent over the internet.
 
 As a result, **for applications running on a server, the API is the definition of _what HTTP requests_ the server will respond to, and _the format of the response_ it will send back**. Read this over a few times, it's really important!
 
@@ -27,7 +23,7 @@ Interacting with an API means sending a HTTP request to a server and receiving s
 
 For example, one way of interacting with the Github API is to do a `GET` request to `https://api.github.com/repos/<user>/<reponame>`, where `<user>` and `<reponame>` are replaced with a github username and repo name respectively.
 
-As we've seen before, we can use the command-line tool `curl` to perform get requests. For example, if we wanted to find out information about the repo for esbuild, we might write:
+As we've seen before, we can use the command-line tool `curl` to perform get requests. For example, if we wanted to find out information about the repo for esbuild, we might enter into the terminal:
 ```sh
 curl https://api.github.com/repos/evanw/esbuild
 ```
@@ -81,6 +77,8 @@ We're going to use the publicly available [Pokémon API](https://pokeapi.co/) to
   - Once the fetch has completed, _then_ convert the response to JSON
   - Once the response is converted to JSON, _then_ log out the data.
 
+
+[(Don't know what a Pokédex is?)](https://en.wikipedia.org/wiki/Gameplay_of_Pok%C3%A9mon#Pok%C3%A9dex)
 ```javascript
 // in node
 

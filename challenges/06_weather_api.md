@@ -148,7 +148,7 @@ somewhere.
 1. Implement the class `WeatherClient`, with a method `fetchWeatherData` that
    fetches the current weather for a given city using `fetch`. It should also
    return a promise, so that we can use the data once it has been received and
-  parsed into an object.
+   parsed into an object.
 
 Example usage:
 ```js
@@ -162,7 +162,8 @@ client.fetchWeatherData('London').then((weatherData) => {
 
 
 2. Test-drive the class `Weather`, which uses the class `WeatherClient` to get the weather
-   for a given city. Make sure the dependency on `WeatherClient` is mocked.
+   for a given city. Make sure the dependency on `WeatherClient` is mocked. If you need a
+   hand mocking API calls, take a look at the [Mocking API Calls pill](https://github.com/makersacademy/javascript-fundamentals/blob/main/pills/mocking_api_calls.md).
 
 ```js
 // in node REPL
@@ -210,6 +211,9 @@ have a look at the additional steps below — or ask your coach for some more ch
   * **Make the `Weather` class periodically (let's say every 5 seconds) fetch the latest
     weather data from the API**, and refresh the data stored by the `Weather` class. You
     can use `setInterval` for this.
+
+## Additional Resources
+[Mocking API Calls pill](https://github.com/makersacademy/javascript-fundamentals/blob/main/pills/mocking_api_calls.md)
 
 [Next Challenge](07_web_server.md)
 
