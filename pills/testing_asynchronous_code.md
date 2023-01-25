@@ -8,8 +8,9 @@ thrown, it counts it as passing, even if the `expect` then fails a moment
 later!
 
 There are a number of ways we can do this, and which one we use depends on
-whether we are using callbacks or async/await to handle our async behaviour,
+whether we are using promises or async/await to handle our async behaviour,
 and also on whether we are mocking our requests.
+<!--
 
 ## Testing Callbacks
 In our Jest tests, we use Jest's `it` function, and pass a label for our test,
@@ -37,10 +38,19 @@ describe('Pokedex', () => {
 If we _don't_ include the `done` parameter, Jest will move on as soon as it gets
 to the bottom of the test, _before_ the API call has completed and _before_ our callback
 containing the `expect` calls has executed. Disaster!
+-->
 
 ## Testing Promises
-Testing promises works exactly like testing callbacks, except that our callback
-is passed through a `then` function.
+In our Jest tests, we use Jest's `it` function, which takes two arguments. The
+first is a label for our test, and the second is a function containing the test
+code itself. Jest will execute this
+function when running our test.
+
+What you might not realise, is that this callback is actually passed an 
+argument by Jest, which is commonly called `done`. This argument is a function 
+we can use to tell Jest when our test is complete. If the test we write takes
+this `done` function as a parameter, Jest will wait until it is called before
+completing the test.
 
 ```js
 describe('Pokedex', () => {
@@ -54,6 +64,10 @@ describe('Pokedex', () => {
   });
 });
 ```
+If we _don't_ include the `done` parameter, Jest will move on as soon as it gets
+to the bottom of the test, _before_ the API call has completed and _before_ our callback
+containing the `expect` calls has executed. Disaster!
+
 
 Alternatively, if our test _returns_ a promise, Jest will wait for that promise
 to settle before ending the test, without having to use `done`:
