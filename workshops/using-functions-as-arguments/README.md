@@ -106,7 +106,7 @@ Can you write a function called `obnoxiousFn` that takes a callback, and announc
 // Example behaviour
 const four = obnoxiousFn(() => {
   return 2 + 2;
-}); // Should print 'EXECUTING CALLBACK!!' and return 4
+}); // Should print 'EXECUTING CALLBACK!' and return 4
 console.log(four); // Should print 4
 ```
 
