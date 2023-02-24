@@ -30,7 +30,7 @@ should be a function. No matter what function it's given as `callback`,
 the callback will be executed and will be passed `'Makers'` as an argument.
 ```js
 const makersBiggestFan = (callback) => {
-  callback("Makers");
+  return callback("Makers");
 };
 ```
 
