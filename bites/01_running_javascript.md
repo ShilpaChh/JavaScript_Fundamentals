@@ -79,6 +79,12 @@ const name = 'JavaScript';
 console.log('Hello, ' + name);
 ```
 
+    > const name = 'JavaScript';
+    undefined
+    > console.log('Hello, ' + name);
+    Hello, JavaScript
+    undefined
+
 This program uses the function `console.log()` to print messages to the console.
 
 [Example solution](https://youtu.be/dHwxu0T-M0g?t=233)
