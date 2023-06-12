@@ -15,18 +15,18 @@ JavaScript has the same basic kinds of loops than in other languages, such as `w
 
 ```js
 // For all numbers from 0 to 10
-for (let i = 0 ; i <= 10 ; i++) {
+for (let i = 0; i <= 10; i++) {
   console.log(i);
 }
 
 // A 'while' loop doing the same thing
-let i = 0
+let i = 0;
 
 while (i <= 10) {
   console.log(i);
 
   i += 1;
-} 
+}
 ```
 
 ## Exercise
@@ -58,20 +58,20 @@ You should get the following output:
 ```js
 // In node
 
-const fizzbuzzUntil = require('./fizzbuzzUntil');
+const fizzbuzzUntil = require("./fizzbuzzUntil");
 
 fizzbuzzUntil(10);
 
-1
-2
-Fizz
-4
-Buzz
-Fizz
-7
-8
-Fizz
-Buzz
+1;
+2;
+Fizz;
+4;
+Buzz;
+Fizz;
+7;
+8;
+Fizz;
+Buzz;
 ```
 
 [Next Challenge](07_functions_as_values.md)

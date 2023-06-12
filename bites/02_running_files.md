@@ -17,7 +17,7 @@ using `node`. Let's try with an example:
 ```javascript
 // file: hello.js
 
-console.log('Hello - I am a file!');
+console.log("Hello - I am a file!");
 ```
 
 Save this code in a file called `hello.js`, and you can now run it from the command line:
@@ -73,7 +73,6 @@ If you don't want to overwrite files, but only check if they're properly formatt
 can use the `--check` option instead of `--write`. The [VSCode extension is also
 available](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) to
 make your life easier, if you're using that editor.
-
 
 [Next Challenge](03_variables_and_visibility.md)
 

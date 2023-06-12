@@ -2,20 +2,20 @@
 
 ## Objectives
 
- * Test-drive a JavaScript class.
+- Test-drive a JavaScript class.
 
 You'll build, test-driving your code, a simple program to manage a thermostat. Here is the
 specification for the initial MVP of the program:
 
-* The Thermostat starts with an initial temperature of 20 degrees
-* You can increase the temperature with an `up` method
-* You can decrease the temperature with a `down` method
-* The *minimum possible temperature* is 10 degrees
-* The *Power saving mode* is *on by default* but it can also be turned off
-* *If power saving mode is on*, the maximum temperature is 25 degrees
-* *If power saving mode is off*, the maximum temperature is 32 degrees
-* You can reset the temperature to 20 with a `reset` method
-* You can ask about the thermostat's *current energy usage*: < 18 is low-usage, <= 25 is
+- The Thermostat starts with an initial temperature of 20 degrees
+- You can increase the temperature with an `up` method
+- You can decrease the temperature with a `down` method
+- The _minimum possible temperature_ is 10 degrees
+- The _Power saving mode_ is _on by default_ but it can also be turned off
+- _If power saving mode is on_, the maximum temperature is 25 degrees
+- _If power saving mode is off_, the maximum temperature is 32 degrees
+- You can reset the temperature to 20 with a `reset` method
+- You can ask about the thermostat's _current energy usage_: < 18 is low-usage, <= 25 is
   medium-usage, anything else is high-usage.
 
 You'll know if your class `Thermostat` is correctly implemented if you can run the
@@ -35,7 +35,7 @@ thermostat.getTemperature(); // should now return 21
 
 thermostat.setPowerSavingMode(true); // PSM is now on, max temperature is 25
 
-for (let i = 0 ; i < 10 ; i++) {
+for (let i = 0; i < 10; i++) {
   thermostat.up();
 }
 
@@ -80,14 +80,11 @@ If you're having trouble, here's a more detailed walkthrough you can follow:
 8. Implementing power saving mode will require more properties and more conditional checks
    when changing the temperature. Don't forget to test-drive this step as well!
 
-
 </p>
 </details>
 
 It's important that you try to implement a solution to this exercise, however incomplete
-it is. 
-
-
+it is.
 
 [Next Challenge](05_calling_apis.md)
 

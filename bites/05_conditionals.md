@@ -11,10 +11,12 @@ Learn to use conditional statements (`if`/`else`)
 ## Introduction
 
 Conditionals work the same way as other languages, but we need:
-  * Brackets `()` to enclose the condition.
-  * Curly braces `{}` to enclose the code "body" executed following this condition.
+
+- Brackets `()` to enclose the condition.
+- Curly braces `{}` to enclose the code "body" executed following this condition.
 
 See the following example:
+
 ```js
 const a = getSomeValue();
 
@@ -26,11 +28,13 @@ if (a === 10) {
   // whatever
 }
 ```
+
 ## Exercise
 
 To complete the following, you will have to:
- * use `if`, `else if` and `else` to write conditionals.
- * use the strict equality operator `===` to compare values.
+
+- use `if`, `else if` and `else` to write conditionals.
+- use the strict equality operator `===` to compare values.
 
 1. Define a function `getNumberSign` that takes a number and returns either 'zero',
    'positive' or 'negative' depending on its sign:
@@ -48,11 +52,10 @@ To complete the following, you will have to:
 
 [Example solution](https://www.youtube.com/watch?v=pT9kAUK_kmY)
 
-*Note*: in all the following examples, we'll use the strict equality operator `===`
+_Note_: in all the following examples, we'll use the strict equality operator `===`
 (instead of `==`), as it can prevent some bugs, and is viewed as one of the best practices
 in the JavaScript community. In your code, you should ideally use `===` as well when doing
 comparisons (unless you have a good reason not to!).
-
 
 ## Exercise
 
@@ -66,11 +69,11 @@ const isValidLength = (phoneNumber) => {
   } else {
     false;
   }
-}
+};
 ```
 
 When calling this function, something doesn't work as expected. What fix can you suggest
-to solve the problem? 
+to solve the problem?
 
 You'll know the function works if you manage to have the expected output when running in
 `node`:
@@ -87,14 +90,16 @@ true
 
 Write a `fizzBuzz` function in JavaScript. As a reminder, this function should take a
 number as argument, and then either:
-  * Return "Fizz" if this number is divisible by 3.
-  * Return "Buzz" if this number is divisible by 5.
-  * Return "FizzBuzz" if this number is divisible by *both* 5 and 3.
-  * Otherwise, Return the number itself.
+
+- Return "Fizz" if this number is divisible by 3.
+- Return "Buzz" if this number is divisible by 5.
+- Return "FizzBuzz" if this number is divisible by _both_ 5 and 3.
+- Otherwise, Return the number itself.
 
 Here's an acceptance criteria of how the function should behave:
+
 ```js
-> fizzBuzz(3); 
+> fizzBuzz(3);
 'Fizz'
 
 > fizzBuzz(5);

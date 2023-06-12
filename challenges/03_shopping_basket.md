@@ -2,8 +2,8 @@
 
 ## Objectives
 
- * Test-drive a program made of different classes.
- * Mock a class in unit tests.
+- Test-drive a program made of different classes.
+- Mock a class in unit tests.
 
 You will now test-drive and implement the two classes `Candy` and `ShoppingBasket` so the
 following code works:
@@ -33,13 +33,14 @@ following code works:
 ```
 
 To complete this exercise, you'll have to:
-  * Initialise a new project directory.
-  * Write Jest tests cases for a class.
-  * Declare a class and its methods.
-  * Use a JS object as a "double" or mock.
-  * [Use `let` rather than
-    `const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)
-    to make a variable able to change.
+
+- Initialise a new project directory.
+- Write Jest tests cases for a class.
+- Declare a class and its methods.
+- Use a JS object as a "double" or mock.
+- [Use `let` rather than
+  `const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)
+  to make a variable able to change.
 
 ## About mocking
 
@@ -47,7 +48,7 @@ Remember that in JavaScript, we can create an object "on the fly" which has some
 similar to how doubles work in RSpec, for example.
 
 If what we want from a mock is only to get a predictable return value from a method, then
-a simple JS  object can also act as a double or mock for something else — let's say, as an
+a simple JS object can also act as a double or mock for something else — let's say, as an
 example, that we want to mock the native `String` class:
 
 ```js
@@ -58,7 +59,7 @@ name.toLowerCase(); // 'james'
 // the following object has one property .toLowerCase,
 // which is a function that returns the mocked value
 
-const nameDouble = { toLowerCase: () => 'james' };
+const nameDouble = { toLowerCase: () => "james" };
 
 // so we can call nameDouble.toLowerCase()
 // which means it's a drop-in replacement for "real" String object,
@@ -108,7 +109,7 @@ class ShoppingBasket {
 
 ## Additional resources
 
- * [Mocking with Jest](../pills/mocking_with_jest.md)
+- [Mocking with Jest](../pills/mocking_with_jest.md)
 
 [Next Challenge](04_thermostat.md)
 

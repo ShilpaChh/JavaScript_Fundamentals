@@ -11,52 +11,55 @@ Learn to declare and call JavaScript functions.
 ## Introduction
 
 In JavaScript, we can define a function with the "function literal syntax".
+
 ```js
 () => {
-  console.log('Hi there!');
+  console.log("Hi there!");
 };
 ```
+
 If you ever see this syntax, with parentheses followed by that little arrow
-`=>`, you are seeing a function being created. But how do we execute this 
+`=>`, you are seeing a function being created. But how do we execute this
 function, after it's been defined? Currently this function is unnamed. It's
 known as an _anonymous function_.
 
 If we want to use it later, we need to give it a name by storing it in a variable:
+
 ```js
 // 1. This function accepts no arguments
 const printMessage = () => {
-  console.log('Hi there!');
-}
+  console.log("Hi there!");
+};
 
 // 2. This function accepts one
 const printMessage = (message) => {
   console.log(message);
-}
+};
 
-printMessage('Hi there!');
+printMessage("Hi there!");
 ```
 
 **Note:** We use the `return` keyword to return a value from the function.
-Be careful - in JavaScript, we *have* to use `return`, otherwise our function will return
+Be careful - in JavaScript, we _have_ to use `return`, otherwise our function will return
 `undefined`.
 
 ```js
 const getName = () => {
-  return 'Léo';
+  return "Léo";
 };
 
 getName(); // returns 'Léo'
 
 // 4. Here, we forgot to use `return`.
 const getName = () => {
-  'Léo'
+  "Léo";
 };
 
 getName(); // returns undefined
 ```
 
 **Note:** In JavaScript, you **must** use parentheses `()` to execute a function,
-even if it doesn't take any arguments. 
+even if it doesn't take any arguments.
 
 Take a look at the code below. What do you think `something` will be? Have a go
 at running this code, and see if your intuition is correct by `console.log`ing `something`.
@@ -78,7 +81,7 @@ it using `module.exports`:
 // file: hello.js
 
 const hello = () => {
-  console.log('Hello!');
+  console.log("Hello!");
 };
 
 // Add this at the end of the file
@@ -91,7 +94,7 @@ Then we can "require" it from another file, or from the `node` REPL:
 // In the node REPL
 // Assuming we're in the same current directory where hello.js is.
 
-const hello = require('./hello');
+const hello = require("./hello");
 
 hello();
 ```
@@ -131,6 +134,7 @@ console.log(sayHello);
 
 Modify the previous function `sayHello` so it accepts one argument, and calling
 `sayHello('Sarah')` displays a personalised message:
+
 ```javascript
 > sayHello('Sarah');
 'Hello Sarah'
@@ -164,36 +168,40 @@ versions, and both syntax can be mixed in the same file. It's important to note 
 searching online for resources and examples, you'll find some code using a different,
 older, syntax. Here are two examples on declaring variables and functions:
 
- * `var` is the "legacy" keyword to declare a variable — it's equivalent to `let`:
-    ```js
-    var total = 120;
-    
-    // equivalent to
-    let total = 120;
-    ```
- * The `function` keyword can be used to declare functions:
-    ```js
-    function add(a, b) {
-      return a + b;
-    }
+- `var` is the "legacy" keyword to declare a variable — it's equivalent to `let`:
 
-    // equivalent to
-    const add = (a, b) => {
-      return a + b;
-    }
+  ```js
+  var total = 120;
 
-    // also equivalent to
-    var add = function (a, b) {
-      return a + b;
-    }
-    ```
+  // equivalent to
+  let total = 120;
+  ```
+
+- The `function` keyword can be used to declare functions:
+
+  ```js
+  function add(a, b) {
+    return a + b;
+  }
+
+  // equivalent to
+  const add = (a, b) => {
+    return a + b;
+  };
+
+  // also equivalent to
+  var add = function (a, b) {
+    return a + b;
+  };
+  ```
+
   When writing code, prefer the syntax used in this module. But when reading code, online,
   remember those equivalences.
 
 ## Additional resources
 
- * [Defining
-   functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#defining_functions)
+- [Defining
+  functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#defining_functions)
 
 [Next Challenge](05_conditionals.md)
 

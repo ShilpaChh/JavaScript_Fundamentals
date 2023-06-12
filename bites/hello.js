@@ -1,4 +1,4 @@
-console.log('Hi there!');
+console.log("Hi there!");
 
 // Ch 2 - Exercise
 // Write, in a file hello.js, a JavaScript program that logs a greeting message to the console.

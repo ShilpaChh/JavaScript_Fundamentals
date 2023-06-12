@@ -12,8 +12,8 @@ Learn to declare and use classes.
 
 ## Introduction
 
-Classes in JS work in a similar way to other languages, they are declared with *methods* —
-and perhaps *attributes* — and can be instantiated when creating *instances*.
+Classes in JS work in a similar way to other languages, they are declared with _methods_ —
+and perhaps _attributes_ — and can be instantiated when creating _instances_.
 
 Here is how we can define a class:
 
@@ -21,10 +21,8 @@ Here is how we can define a class:
 // file: rectangle.js
 
 class Rectangle {
-
   // A constructor, to give initial arguments.
   constructor(height, width) {
-
     // We can define attributes stored on the instance with `this`
     this.height = height;
     this.width = width;
@@ -45,7 +43,7 @@ We can now launch the `node` REPL and require the class:
 ```js
 // In the REPL
 
-const Rectangle = require('./rectangle');
+const Rectangle = require("./rectangle");
 ```
 
 And use it to create new instances:
@@ -59,7 +57,7 @@ rect.getArea(); // 40
 ### Exporting classes
 
 You might be wondering (rightly) what happens to our `module.exports` and `require`. We
-know how to export functions, but what about classes?  Well, it turns out classes can be
+know how to export functions, but what about classes? Well, it turns out classes can be
 exported and required the same way as functions! So we can write something like this:
 
 ```javascript
@@ -69,7 +67,7 @@ module.exports = Rectangle;
 
 ```javascript
 // ... and in the node REPL
-const Rectangle = require('./rectangle');
+const Rectangle = require("./rectangle");
 
 const rect = new Rectangle(4, 10);
 ```
@@ -82,7 +80,7 @@ able to use this class:
 ```javascript
 > const user = new User('Uma');
 
-> user.getName(); 
+> user.getName();
 'Uma'
 
 > user.getIntroduction();
@@ -90,12 +88,12 @@ able to use this class:
 ```
 
 To complete this exercise, you will have to:
- * Learn how to declare a class and its methods. Having a look at the [Classes MDN
-   documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes#class_declarations)
-   is a good start.
- * Initialise an attribute within the [constructor special
-   method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor)
 
+- Learn how to declare a class and its methods. Having a look at the [Classes MDN
+  documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes#class_declarations)
+  is a good start.
+- Initialise an attribute within the [constructor special
+  method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor)
 
 Implement the `User` class in a file `user.js` so it behaves exactly like in the example
 code above.
@@ -127,14 +125,10 @@ class User {
 
 ## Exercise
 
-Given the following *array* of `User` instances (the class from the previous exercise):
+Given the following _array_ of `User` instances (the class from the previous exercise):
 
 ```javascript
-const users = [
-  new User('Uma'),
-  new User('Josh'),
-  new User('Ollie')
-];
+const users = [new User("Uma"), new User("Josh"), new User("Ollie")];
 ```
 
 We'd now like to have a class `UserBase` that behaves like this:
@@ -157,9 +151,10 @@ We'd now like to have a class `UserBase` that behaves like this:
 ```
 
 To complete this exercise, you will have to:
- * declare a new class and its methods.
- * use what you've previous learned on working with arrays, like the `map` method.
- * call methods from the `User` class.
+
+- declare a new class and its methods.
+- use what you've previous learned on working with arrays, like the `map` method.
+- call methods from the `User` class.
 
 Implement the `UserBase` class in a file `userBase.js` so it behaves exactly like in the
 example code above.
@@ -197,7 +192,7 @@ get the following behaviour:
 
 ## Additional resources
 
- * [Classes in JS](https://javascript.info/class)
+- [Classes in JS](https://javascript.info/class)
 
 <!-- BEGIN GENERATED SECTION DO NOT EDIT -->
 

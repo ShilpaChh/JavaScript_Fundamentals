@@ -17,14 +17,14 @@ build a more complex coding challenge using all of those new concepts.
 
 ## Learning objectives
 
-* Test-drive a simple Javascript program using Node.
-* Explain how asynchronous programming is different from synchronous, blocking
+- Test-drive a simple Javascript program using Node.
+- Explain how asynchronous programming is different from synchronous, blocking
   programming.
-* Apply a coherent process to learn a new language.
+- Apply a coherent process to learn a new language.
 
 ## Outline
 
-### Phase One 
+### Phase One
 
 Work through these exercises designed to train the basics of JavaScript. If you already
 know JavaScript or you feel like a challenge, feel free to skip a few of these steps.
@@ -63,27 +63,28 @@ Most people won't complete all of this and that is OK.
 [Work on the Bowling Challenge in JavaScript](https://github.com/makersacademy/bowling-challenge)
 
 ## Practicals and other resources
- * [Learning a new language by translation](https://hackmd.io/kMNgXiPHQf2Q_P9A-tnS9A)
- * [Mocking with Jest](./pills/mocking_with_jest.md)
- * [Explore asynchronicity in JavaScript with callback functions](./practicals/callbacks)
- * [What is a callback in JavaScript? (video)](https://www.youtube.com/watch?v=xHneyv38Jro)
- * [Manipulating functions](./practicals/functions)
- * [Closures](https://hackmd.io/cIFsMAqISHqVHN_-p9hY0Q)
- * [Stretch — build a web server with JavaScript](./practicals/web-server)
- * [Technical learning resources](https://airtable.com/shrgYePUbXMJBSZQW/tblokmw6yNUO75ge6)
+
+- [Learning a new language by translation](https://hackmd.io/kMNgXiPHQf2Q_P9A-tnS9A)
+- [Mocking with Jest](./pills/mocking_with_jest.md)
+- [Explore asynchronicity in JavaScript with callback functions](./practicals/callbacks)
+- [What is a callback in JavaScript? (video)](https://www.youtube.com/watch?v=xHneyv38Jro)
+- [Manipulating functions](./practicals/functions)
+- [Closures](https://hackmd.io/cIFsMAqISHqVHN_-p9hY0Q)
+- [Stretch — build a web server with JavaScript](./practicals/web-server)
+- [Technical learning resources](https://airtable.com/shrgYePUbXMJBSZQW/tblokmw6yNUO75ge6)
 
 ## Workshops
 
- * [Using Functions as Arguments](./workshops/using-functions-as-arguments)
- * [Asynchronous JS and callbacks](./workshops/async-js-and-callbacks)
- * [Following the flow and getting visibility in JavaScript](./workshops/debugging)
+- [Using Functions as Arguments](./workshops/using-functions-as-arguments)
+- [Asynchronous JS and callbacks](./workshops/async-js-and-callbacks)
+- [Following the flow and getting visibility in JavaScript](./workshops/debugging)
 
 ## Additional resources
 
-* [The function keyword in JS](https://github.com/makersacademy/course/blob/main/pills/js_functions.md)
-* [JavaScript versions - ES6 and before](https://www.codecademy.com/articles/javascript-versions)
-* [What is a callback in JavaScript? (video)](https://www.youtube.com/watch?v=xHneyv38Jro)
-* [Build a simple web server with express](https://expressjs.com/en/starter/hello-world.html)
+- [The function keyword in JS](https://github.com/makersacademy/course/blob/main/pills/js_functions.md)
+- [JavaScript versions - ES6 and before](https://www.codecademy.com/articles/javascript-versions)
+- [What is a callback in JavaScript? (video)](https://www.youtube.com/watch?v=xHneyv38Jro)
+- [Build a simple web server with express](https://expressjs.com/en/starter/hello-world.html)
 
 <!-- BEGIN GENERATED SECTION DO NOT EDIT -->
 

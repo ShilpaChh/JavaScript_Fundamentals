@@ -11,14 +11,15 @@ Learn to `filter` and `map` arrays.
 ## Introduction
 
 You'll now learn about two methods we use on arrays:
-  * [`filter`](https://www.w3schools.com/jsref/jsref_filter.asp) to create a new array by
-    applying a predicate function on existing array's elements.
-  * [`map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
-    to create a new array by applying a specific operation to the existing array's
-    elements.
+
+- [`filter`](https://www.w3schools.com/jsref/jsref_filter.asp) to create a new array by
+  applying a predicate function on existing array's elements.
+- [`map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+  to create a new array by applying a specific operation to the existing array's
+  elements.
 
 ```js
-const names = ['Anna', 'Li', 'Charlie', 'Mary', 'Jo'];
+const names = ["Anna", "Li", "Charlie", "Mary", "Jo"];
 
 // 1. Using a predicate function and `filter` to get only names shorter than 3 letters.
 const isShorterThanThree = (name) => {
@@ -27,7 +28,7 @@ const isShorterThanThree = (name) => {
   } else {
     return false;
   }
-}
+};
 
 const namesShorterThanThreeLetters = names.filter(isShorterThanThree);
 
@@ -36,7 +37,7 @@ const namesShorterThanThreeLetters = names.filter(isShorterThanThree);
 
 const getUppercased = (name) => {
   return name.toUpperCase();
-}
+};
 
 const uppercasedNames = names.map(getUppercased);
 ```
@@ -58,7 +59,7 @@ AAAA#####AAAA#87@768767382672  <-- not a phone number!
 ```
 
 However, you realise that most phone numbers on the list are no longer than 10 digits.
-Maybe you could just implement a JavaScript function to do the filtering for you! 
+Maybe you could just implement a JavaScript function to do the filtering for you!
 
 To complete this exercise you will have to use Array's [filter
 method](https://www.w3schools.com/jsref/jsref_filter.asp) to filter long numbers using
@@ -69,7 +70,7 @@ this function.
 1. Declare a function `checkLength` that takes a phone number (**as a string**) as
    argument, and returns `true` if this phone number contains **10 characters or less**.
 2. Now declare a function `filterLongNumbers` that takes an array of phone numbers. This
-   function should return only numbers that contain *10 characters or less*. It should
+   function should return only numbers that contain _10 characters or less_. It should
    make use of the function `checkLength` written previously.
 
 Once your function is written, you should be able to type the following code and have the
@@ -105,21 +106,23 @@ promotion. Along with the phone numbers, you also now have a list of names:
 ```
 
 To complete this exercise you'll have to:
- * create a function that takes a single name and generate the correct message for it.
- * use [Array's map
-   method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
-   to generate the list of personalised messages using this function.
+
+- create a function that takes a single name and generate the correct message for it.
+- use [Array's map
+  method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+  to generate the list of personalised messages using this function.
 
 ### Questions
 
 1. Write a function `generateMessages` that takes an array of names and returns an array
    of personalised messages for each name. For example, when given the array above, the
    function should return an array with the first element being the string `'Hi Anna! 50%
-   off our best candies for you today!'`, the second element the string `'Hi Laura! 50%
-   off our best candies for you today!'`, and so on. 
+off our best candies for you today!'`, the second element the string `'Hi Laura! 50%
+off our best candies for you today!'`, and so on.
 
 Once your function is written, you should be able to type the following code and have the
 exact same output:
+
 ```javascript
 > const names = ['Anna', 'Laura', 'Josh', 'Min', 'Karla'];
 
@@ -153,8 +156,9 @@ with the following array:
 ```
 
 To complete this exercise, you'll have to:
-  * use Array's `map` method again.
-  * access the properties of an object as seen previously.
+
+- use Array's `map` method again.
+- access the properties of an object as seen previously.
 
 ### Questions
 
@@ -163,6 +167,7 @@ To complete this exercise, you'll have to:
 
 Once your function is written, you should be able to type the following code and have the
 exact same output:
+
 ```javascript
 > const namesAndDiscounts = [
   { name: 'Anna', discount: 50 },
@@ -184,10 +189,10 @@ exact same output:
 
 ## Additional resources
 
- * [Filter array elements using `filter` and a test
-   function](https://www.javascripttutorial.net/javascript-array-filter/)
- * [Use `map` to iterate through array items and create a new
-   array](https://www.digitalocean.com/community/tutorials/4-uses-of-javascripts-arraymap-you-should-know)
+- [Filter array elements using `filter` and a test
+  function](https://www.javascripttutorial.net/javascript-array-filter/)
+- [Use `map` to iterate through array items and create a new
+  array](https://www.digitalocean.com/community/tutorials/4-uses-of-javascripts-arraymap-you-should-know)
 
 [Next Challenge](12_classes.md)
 

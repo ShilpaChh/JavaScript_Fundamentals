@@ -10,15 +10,26 @@
 
 1. Define a function `isEmpty` that returns `true` if the given string is empty or contains only blank characters, and returns `false` otherwise.
 2. Declare the following array:
+
 ```js
-messages = ['Hello', '', 'How is it going?', 'Bye!', '', ' ', 'Who wants some coffee?', '    '];
-```
-3. Using the `filter` method and the function defined in 1., get a new array that contains only messages that are not empty:
-```js
-// you should get
-['Hello', 'How is it going?', 'Bye!', 'Who wants some coffee?'];
+messages = [
+  "Hello",
+  "",
+  "How is it going?",
+  "Bye!",
+  "",
+  " ",
+  "Who wants some coffee?",
+  "    ",
+];
 ```
 
+3. Using the `filter` method and the function defined in 1., get a new array that contains only messages that are not empty:
+
+```js
+// you should get
+["Hello", "How is it going?", "Bye!", "Who wants some coffee?"];
+```
 
 <!-- BEGIN GENERATED SECTION DO NOT EDIT -->
 

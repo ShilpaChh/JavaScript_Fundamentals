@@ -33,7 +33,8 @@ $ jest
 
 ## Detailed guidance
 
-In most programming languages, we can use libraries, which are made of code already written for us to solve a specific problem.  In JavaScript, libraries are called `packages` and are listed in a file called `package.json`, located in the project directory root. To create an empty `package.json` file, run the following command inside a new project directory:
+In most programming languages, we can use libraries, which are made of code already written for us to solve a specific problem. In JavaScript, libraries are called `packages` and are listed in a file called `package.json`, located in the project directory root. To create an empty `package.json` file, run the following command inside a new project directory:
+
 ```
 $ npm init -y
 ```
@@ -41,6 +42,7 @@ $ npm init -y
 (The `-y` option skills all the questions we don't need to answer about the info contained in `package.json`)
 
 You should now have something that looks like this:
+
 ```json
 {
   "name": "js-week",
@@ -62,7 +64,7 @@ We're going to install our first package: `jest`. We'll use it to run unit tests
 
 To install it, run `npm install -g jest`. The `-g` option installs Jest "globally", so we can later run tests in a given project using the command `jest` — this will make our life easier.
 
-**We *also* need to run `npm add jest` *inside the project directory*.** The package will be saved in the `node_modules` folder.
+**We _also_ need to run `npm add jest` _inside the project directory_.** The package will be saved in the `node_modules` folder.
 
 This folder can get very big, so if you are planning on committing this project, you should add `node_modules` to your `.gitignore` file before you do. It also allows us to use the jest command when we are in this folder.
 

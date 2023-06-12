@@ -23,15 +23,14 @@ to a Ruby hash. Here's an example of a JavaScript object:
 
 ```javascript
 const person = {
-  name: 'Maxine',
+  name: "Maxine",
   age: 32,
-  address: 'London, E1 123'
+  address: "London, E1 123",
 };
 
 // both ways can be used to access an object's property:
 console.log(person.name);
-console.log(person['name']);
-
+console.log(person["name"]);
 ```
 
 ## Two ways of declaring objects
@@ -48,7 +47,7 @@ const bankAccount = {
   // we can attach functions too (so they act like 'methods'):
   getBalance: () => {
     return 100;
-  }
+  },
 };
 
 bankAccount.getBalance();
@@ -60,22 +59,23 @@ you'll need to mock in your unit tests).
 
 The other way, which you're probably familiar with, is **to create objects from a class**
 so they all have the same "blueprint" of attributes and methods. You'll learn about how to
-create JavaScript classes soon. 
+create JavaScript classes soon.
 
 ## Exercise
 
-An object is composed of *key-values* pairs. Those values can be any primitive values such
+An object is composed of _key-values_ pairs. Those values can be any primitive values such
 as strings or numbers, as in the example above, or they can be more complex things, such
 as other objects, arrays, or even functions:
+
 ```javascript
 const person = {
-  name: 'Maxine',
+  name: "Maxine",
   age: 32,
   address: {
-    city: 'London',
-    postcode: 'E1 123'
+    city: "London",
+    postcode: "E1 123",
   },
-  hobbies: ['writing', 'tennis', 'cooking']
+  hobbies: ["writing", "tennis", "cooking"],
 };
 ```
 
@@ -87,20 +87,22 @@ const person = {
 ## Challenge
 
 1. Declare an object `cohort` that has the following properties:
-    * a string `name` (e.g `'May2022'`)
-    * a number `id` (e.g `1234`)
-    * an array of student names
+
+   - a string `name` (e.g `'May2022'`)
+   - a number `id` (e.g `1234`)
+   - an array of student names
 
 2. Declare a function that accepts that object as argument and print a message with the
    following structure:
+
 ```
 <COHORT_ID> - <COHORT_NAME> - <NUMBER_OF_STUDENTS> students in this cohort
 ```
 
 ### Additional resources
 
- * [Objects and
-   properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects#objects_and_properties)
+- [Objects and
+  properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects#objects_and_properties)
 
 [Next Challenge](11_array_operations.md)
 

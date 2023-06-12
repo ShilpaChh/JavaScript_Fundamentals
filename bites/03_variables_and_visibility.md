@@ -14,19 +14,20 @@ Learn to declare variables and print them in JavaScript.
 
 In JavaScript, we can print **to the terminal** arbitrary strings and variables using
 `console.log`, like this:
+
 ```javascript
 // Just printing a literal string
-console.log('Hello there');
+console.log("Hello there");
 
 // Declaring a new variable `age`
 age = 25;
 
 // We can concatenate strings with variables using the + operator
-console.log('I am ' + age + 'years old');
+console.log("I am " + age + "years old");
 
 // Assigning a new value
 age = 27;
-console.log('I am now ' + age + 'years old!');
+console.log("I am now " + age + "years old!");
 ```
 
 We can use the `const` keyword to declare a value as "constant", if we're not planning to
@@ -35,9 +36,9 @@ variable**, as it can prevent a few different kind of errors in your programs (i
 communicates that this value won't need to change).
 
 ```javascript
-const name = 'Charlie';
+const name = "Charlie";
 
-name = 'Jess'; // will throw 'TypeError: Assignment to constant variable.'
+name = "Jess"; // will throw 'TypeError: Assignment to constant variable.'
 ```
 
 ## Demonstration
@@ -51,8 +52,8 @@ first.
 
 1. In the `node` REPL, declare two variables — `a` with value 4 and `b` with value 6.
 2. Using `console.log`, print the result of:
-    * `a + b` (should print 10)
-    * `a * b` (should print 24)
+   - `a + b` (should print 10)
+   - `a * b` (should print 24)
 
 [Example solution](https://youtu.be/l6UR1mK6dsg?t=238)
 
@@ -67,7 +68,6 @@ const name = 'Makers';
 
 console.log greeting + name;
 ```
-
 
 [Next Challenge](04_functions.md)
 

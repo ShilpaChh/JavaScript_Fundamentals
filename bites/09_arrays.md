@@ -23,16 +23,16 @@ console.log(numbers[0]); // 1
 
 console.log(numbers); // [1, 2, 3, 4]
 
-console.log(newNumbers) // [1, 2, 3, 4, 5]
+console.log(newNumbers); // [1, 2, 3, 4, 5]
 
-console.log(numbers.length) // 4
+console.log(numbers.length); // 4
 
-console.log(newNumbers.length) // 5
+console.log(newNumbers.length); // 5
 
 // Loop through the array and execute code for each element
 numbers.forEach((number) => {
   console.log(number);
-})
+});
 ```
 
 ## Exercise
@@ -61,38 +61,39 @@ to iterate over each element.
 You are helping your friend, who owns a candies business, with their website. Every order
 placed on the website gets assigned an order ID, such as `1274`.
 
-Your friend would like to create batches of *five* order IDs. They ask you if you could
+Your friend would like to create batches of _five_ order IDs. They ask you if you could
 give a hand and write a small program to do this.
 
 To complete this exercise you will have to find out:
- * how to [add elements to an array with the `.concat`
-   method](https://www.samanthaming.com/tidbits/87-5-ways-to-append-item-to-array/)
- * how to get the length of an array
+
+- how to [add elements to an array with the `.concat`
+  method](https://www.samanthaming.com/tidbits/87-5-ways-to-append-item-to-array/)
+- how to get the length of an array
 
 ### Questions
 
-1. Declare a function `addToBatch` that takes two arguments, an *array* and *a number*,
-   and returns a *new array* by adding the number to the array.
-2. Now, make sure this function *does not* add the number *if the array's length is
-   already 5 or greater* — it should just return the array untouched in that case.
+1. Declare a function `addToBatch` that takes two arguments, an _array_ and _a number_,
+   and returns a _new array_ by adding the number to the array.
+2. Now, make sure this function _does not_ add the number _if the array's length is
+   already 5 or greater_ — it should just return the array untouched in that case.
 
 Once your function is written, you should be able to type the following code and have the
 exact same output:
 
 ```javascript
-> addToBatch([1], 3); 
+> addToBatch([1], 3);
 [ 1, 3 ]
 
-> addToBatch([1, 2, 3], 4); 
+> addToBatch([1, 2, 3], 4);
 [ 1, 2, 3, 4 ]
 
-> addToBatch([], 8); 
+> addToBatch([], 8);
 [ 8 ]
 
-> addToBatch([1, 2, 3, 4, 5, 6], 7); 
+> addToBatch([1, 2, 3, 4, 5, 6], 7);
 [ 1, 2, 3, 4, 5, 6 ]
 
-> addToBatch([1, 2, 3, 4, 5, 6, 7, 8, 9], 10); 
+> addToBatch([1, 2, 3, 4, 5, 6, 7, 8, 9], 10);
 [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 ```
 
@@ -106,15 +107,15 @@ const addToBatch = (array, number) => {
   }
 
   return array.concat(number);
-}
+};
 ```
 
 </details>
 
 ## Additional resources
 
- * [Array's `concat`
-   method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)
+- [Array's `concat`
+  method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)
 
 [Next Challenge](10_objects.md)
 

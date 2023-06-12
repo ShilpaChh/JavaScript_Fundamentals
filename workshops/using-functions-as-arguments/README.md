@@ -1,16 +1,18 @@
 # Using Functions as Arguments (aka. callbacks)
+
 In JavaScript, functions can be passed around like any other data. They can be
 stored in variables, and used as arguments to other functions. When a function
 is used as an argument for a second function, it's often called a callback.
 
 Learning objectives:
+
 - Understand that functions can be used and manipulated in a similar way to how
   we can use strings, arrays, objects etc.
 - Be able to write functions that take callbacks as arguments
 
-
 Here is a function which converts a string to capital letters.
 We'll be using it later.
+
 ```js
 const convertToCaps = (string) => {
   return string.toUpperCase();
@@ -19,6 +21,7 @@ const convertToCaps = (string) => {
 
 Here is a function which adds an exclamation mark to a string.
 We'll be using it later.
+
 ```js
 const exclaim = (string) => {
   return string + "!";
@@ -28,6 +31,7 @@ const exclaim = (string) => {
 Here is a function which takes one argument, called `callback`. This argument
 should be a function. No matter what function it's given as `callback`,
 the callback will be executed and will be passed `'Makers'` as an argument.
+
 ```js
 const makersBiggestFan = (callback) => {
   return callback("Makers");
@@ -39,6 +43,7 @@ Let's try it out!
 Before running this code, see if you can follow precisely the logic
 of what is happening. Make a prediction of what you will see and
 why.
+
 ```js
 const res1 = makersBiggestFan(convertToCaps);
 console.log("res1:", res1);
@@ -46,6 +51,7 @@ console.log("res1:", res1);
 const res2 = makersBiggestFan(exclaim);
 console.log("res2:", res2);
 ```
+
 Was your prediction correct? If not, what do you think actually happened?
 
 --
@@ -71,15 +77,18 @@ when the callback doesn't need to be reused elsewhere.
 It's analogous to doing something like:
 
 ```js
-const statement = 'I love javascript'
-const excitingStatement = exclaim(statement)
+const statement = "I love javascript";
+const excitingStatement = exclaim(statement);
 ```
-  vs.
+
+vs.
+
 ```js
-const excitingStatement = exclaim('I love Javascript')
+const excitingStatement = exclaim("I love Javascript");
 ```
 
 ## Exercises
+
 For each of these exercises, you have been provided an empty function inside
 `exercises.js`. There are tests for each exercise inside `exercises.test.js`,
 **you do not need to edit these tests**.
@@ -87,10 +96,12 @@ For each of these exercises, you have been provided an empty function inside
 You can run the tests by navigating to this folder, making sure the package is installed with `npm install` and then run the tests with `npx jest`.
 
 ### Exercise 1:
+
 `makersBiggestFan` executes whatever callback we give it with the string `'Makers'`.
 
 Can you write a function called `doubleCall` which executes whatever callback
 we give it twice?
+
 ```js
 // Example behaviour
 const sayHello = () => {
@@ -101,7 +112,9 @@ doubleCall(sayHello); // Should print 'Hello!' twice.
 ```
 
 ### Exercise 2:
+
 Can you write a function called `obnoxiousFn` that takes a callback, and announces loudly it's executing its callback, before doing it and returning the result?
+
 ```js
 // Example behaviour
 const four = obnoxiousFn(() => {
@@ -111,12 +124,15 @@ console.log(four); // Should print 4
 ```
 
 ### Exercise 3:
+
 Can you write a function `currentTime` that takes a callback, and executes the given callback using the current time as an argument? The time should be a string in the format 'HH:MM:SS'.
 
 Hint:
+
 > You can use `new Date()` to get a date object representing the current time.
 >
 > Date objects have a `.toLocaleTimeString()` method on them: `date.toLocaleTimeString()`
+
 ```js
 // Example behaviour
 currentTime((time) => {
@@ -125,10 +141,14 @@ currentTime((time) => {
 ```
 
 ### Bonus:
+
 The `.map()` function takes a callback, and executes it with each element of an array:
+
 ```js
-const strings = [1,2,3].map((number) => { return number.toString() })
-console.log(strings) // ['1', '2', '3']
+const strings = [1, 2, 3].map((number) => {
+  return number.toString();
+});
+console.log(strings); // ['1', '2', '3']
 ```
 
 Can you write your own version of the map function called `myMap`? It should be used like this:
@@ -146,7 +166,7 @@ const double = (num) => {
 };
 
 const uppercaseArray = myMap(lettersArray, toUpperCase); // uppercaseArray should be ['A', 'B', 'C']
-const doubledArray = myMap(numbersArray, double);   // doubledArray should be [2, 4, 6, 10]
+const doubledArray = myMap(numbersArray, double); // doubledArray should be [2, 4, 6, 10]
 ```
 
 > Hint: You will need to use a `for` loop here.

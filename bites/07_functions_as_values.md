@@ -19,7 +19,7 @@ strings, etc.
 // Creating a function
 const aFunction = () => {
   return 123;
-}
+};
 
 // Functions can be referenced as values, without the brackets ()
 // here we are essentially assigning the exact same function to a new name.
@@ -36,13 +36,13 @@ example:
 ```js
 const uppercaseMessage = (message) => {
   return message.toUpperCase();
-}
+};
 
 // This function accepts as arguments a string message, and a function.
 // It then calls the given function to do its job.
 const transform = (message, transformFunction) => {
   return transformFunction(message);
-}
+};
 
 transform("hello", uppercaseMessage);
 ```
@@ -64,12 +64,13 @@ first.
    of the given string.
 
 2. Declare a function `transform` that behaves like the one above:
-    * takes one string and one function as arguments
-    * calls the function on the given string.
+
+   - takes one string and one function as arguments
+   - calls the function on the given string.
 
 3. Call `transform` by giving it the string `'WHY ARE YOU SHOUTING?'` and the function
    `lowercaseMessage`. It should return a lowercase version of the message (`'why are you
-   shouting?'`)
+shouting?'`)
 
 [Example solution](https://youtu.be/KnB61fZjcv4?t=606)
 
@@ -77,19 +78,19 @@ first.
 
 You've previously learned how to declare a function, and you've also seen that a function
 can be assigned just like a variable. To complete this exercise, you'll have to pass a
-function *as an argument* to another function.
+function _as an argument_ to another function.
 
 1. Declare a function `notifyByEmail` that accepts an email address as argument and
    returns the string `'Email sent to: <EMAIL>'`.
 2. Declare a function `notifyByText` that accepts a phone number (as a string) as argument
    and returns the string `'Text sent to: <PHONE NUMBER>'`.
 3. Now declare a generic function `notify` that accepts a first string argument (either an
-   email or a phone), and *the function to use* in second argument. This function should
+   email or a phone), and _the function to use_ in second argument. This function should
    only rely on calling the function passed in second argument, not declare a string by
    itself.
 4. Use the function `notify` with the two previous functions to:
-    * send an email to `hello@makers.tech.test` and get the expected output.
-    * send a text to `+10000000000` and get the expected output.
+   - send an email to `hello@makers.tech.test` and get the expected output.
+   - send a text to `+10000000000` and get the expected output.
 
 <details>
 <summary>Reveal suggested solution</summary>
@@ -97,22 +98,21 @@ function *as an argument* to another function.
 ```javascript
 const notifyByEmail = (email) => {
   return `Email sent to: ${email}`;
-}
+};
 
 const notifyByText = (phoneNumber) => {
   return `Text sent to: ${phoneNumber}`;
-}
+};
 
 const notify = (emailOrPhone, notifyFunction) => {
   return notifyFunction(emailOrPhone);
-}
+};
 
-console.log(notify('hello@makers.tech.test', notifyByEmail));
-console.log(notify('+10000000000', notifyByText));
+console.log(notify("hello@makers.tech.test", notifyByEmail));
+console.log(notify("+10000000000", notifyByText));
 ```
+
 </details>
-
-
 
 [Next Challenge](08_callbacks.md)
 

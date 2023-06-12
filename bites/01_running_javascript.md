@@ -11,7 +11,7 @@ Learn to run JavaScript in the `node` REPL.
 ## Introduction
 
 You will need to install a program called Node.js (also just called "node"). Node is a
-JavaScript *runtime* - which means it reads JavaScript code, and execute it as a program.
+JavaScript _runtime_ - which means it reads JavaScript code, and execute it as a program.
 This is very similar to, for example, `ruby` or `irb`, which can read and execute Ruby
 code, either in files or entered directly into the REPL.
 
@@ -23,7 +23,7 @@ node` will automatically install and use the latest stable version.
 
 NVM is distributed using github - you can find installation instructions for the latest
 version [here](https://github.com/nvm-sh/nvm#installing-and-updating). You'll need to run
-a command that looks like this: 
+a command that looks like this:
 
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
@@ -48,16 +48,17 @@ wrong, have a look at the [troubleshooting
 section](https://github.com/nvm-sh/nvm#troubleshooting-on-macos) or reach out to someone
 for help.
 
-Your should now be able to type `node` inside your terminal, to launch the node REPL: 
+Your should now be able to type `node` inside your terminal, to launch the node REPL:
+
 ```
 $ node
 Welcome to Node.js v16.6.0.
 Type ".help" for more information.
-> 
+>
 ```
 
 You should now be able to type some JavaScript code inside it, and see the result of what
-you've typed, much like when using `irb`. 
+you've typed, much like when using `irb`.
 
 Try with something simple like `2 + 2` and press `enter` to get the result.
 Congratulations, you just wrote your first line of JavaScript! Perhaps a slightly boring
@@ -75,8 +76,8 @@ first.
 Run this program with JavaScript in the `node` REPL:
 
 ```javascript
-const name = 'JavaScript';
-console.log('Hello, ' + name);
+const name = "JavaScript";
+console.log("Hello, " + name);
 ```
 
     > const name = 'JavaScript';
@@ -91,8 +92,7 @@ This program uses the function `console.log()` to print messages to the console.
 
 ## Additional resources
 
- * [How to use the node.js REPL](https://nodejs.dev/en/learn/how-to-use-the-nodejs-repl/)
-
+- [How to use the node.js REPL](https://nodejs.dev/en/learn/how-to-use-the-nodejs-repl/)
 
 [Next Challenge](02_running_files.md)
 

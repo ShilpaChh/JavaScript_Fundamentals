@@ -1,8 +1,10 @@
 # Mocking API Calls
+
 This guidance will help you learn how to
- * Explain why we should mock HTTP requests made by our program
- * Mock HTTP requests sent using `fetch`
- * Use dependency injection to decouple JavaScript classes
+
+- Explain why we should mock HTTP requests made by our program
+- Mock HTTP requests sent using `fetch`
+- Use dependency injection to decouple JavaScript classes
 
 When writing tests for our code, we always want to know that our tests are
 testing what they say they are. If our internet connection falters, or the API
@@ -16,6 +18,7 @@ There are two main ways of doing this, and which one we use mainly depends on
 whether we are writing a unit test or a feature test.
 
 ## Feature tests - using jest-fetch-mock
+
 The library [Jest Fetch Mock](https://github.com/jefflau/jest-fetch-mock)
 provides us with a way of intercepting usages of the built-in `fetch` function.
 
@@ -24,6 +27,7 @@ code working together, but still want to insulate the test from random external
 failures.
 
 We can use it like this:
+
 ```js
 const jestFetchMock = require("jest-fetch-mock");
 jestFetchMock.enableMocks();
@@ -53,6 +57,7 @@ describe("testing api", () => {
 ```
 
 ## Unit Tests - Dependency Injection
+
 Dependency injection is a method of decoupling classes, by removing a hard
 dependency between different parts of a class system. For example, say we had
 a Client class which was responsible for performing our API requests:
@@ -60,8 +65,9 @@ a Client class which was responsible for performing our API requests:
 ```js
 class Client {
   getUser(id) {
-    return fetch(`http://localhost:3000/users/${id}`)
-      .then((response) => response.json())
+    return fetch(`http://localhost:3000/users/${id}`).then((response) =>
+      response.json()
+    );
   }
 }
 ```
@@ -74,18 +80,17 @@ flexible.
 ```js
 class AddressBook {
   constructor(client) {
-    this.client = client
-    this.users = []
+    this.client = client;
+    this.users = [];
   }
 
   addUserById = (id) => {
-    return this.client.getUser(id)
-      .then((user) => this.users.push(user))
-  }
+    return this.client.getUser(id).then((user) => this.users.push(user));
+  };
 
   all = () => {
-    return this.users
-  }
+    return this.users;
+  };
 }
 ```
 
@@ -122,8 +127,6 @@ describe("AddressBook", () => {
   });
 });
 ```
-
-
 
 <!-- BEGIN GENERATED SECTION DO NOT EDIT -->
 

@@ -2,9 +2,9 @@ class FizzBuzz {
   play(number) {
     let otherNumber = number - 50;
     if (this._isDivisibleBy(15, number)) {
-      return 'FizzBuzz';
+      return "FizzBuzz";
     } else if (this._isDivisibleBy(20, otherNumber)) {
-      return 'Buzz';
+      return "Buzz";
     } else {
       return number;
     }

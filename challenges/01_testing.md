@@ -2,8 +2,8 @@
 
 ## Objectives
 
- * Initialise a new project directory with `npm init`.
- * Write and run unit tests with Jest. 
+- Initialise a new project directory with `npm init`.
+- Write and run unit tests with Jest.
 
 Like in other languages, we have to test our programs to make sure they're working. In
 this module we'll use the [library Jest](https://jestjs.io/) to write and run tests — like
@@ -31,12 +31,12 @@ Below is the basic scaffolding for a test suite, using the `describe` function:
 ```javascript
 // file: add.test.js
 
-describe('add', () => {
+describe("add", () => {
   // test cases
 });
 ```
 
-As usual when writing tests, we need to think *what is it* we want to test or verify.
+As usual when writing tests, we need to think _what is it_ we want to test or verify.
 Let's imagine for a second that the function `add` exists, and that we can call it inside
 the REPL. How could we test that this function is working? We could simply call it with
 some given arguments and verify the result is correct:
@@ -50,17 +50,18 @@ We can then translate this into a proper test case, using the `it` function:
 ```javascript
 // file: add.test.js
 
-describe('add', () => {
-  it('adds 2 and 2', () => {
+describe("add", () => {
+  it("adds 2 and 2", () => {
     // TODO: write test
   });
 });
 ```
 
 To complete the rest of this exercise, you will need to:
-  * use [Jest test matchers](https://jestjs.io/docs/using-matchers) (such as
-    `expect().toBe()`)
-  * use `module.exports` and `require` to require a JavaScript "module".
+
+- use [Jest test matchers](https://jestjs.io/docs/using-matchers) (such as
+  `expect().toBe()`)
+- use `module.exports` and `require` to require a JavaScript "module".
 
 ### Questions
 
@@ -78,24 +79,27 @@ To complete the rest of this exercise, you will need to:
 <summary>Reveal suggested solution</summary>
 
 1. Contents of `add.js`:
+
 ```javascript
 const add = (a, b) => {
   return a + b;
-}
+};
 
 module.exports = add;
 ```
 
 2. Contents of `add.test.js`:
-```javascript
-const add = require('./add');
 
-describe('add', () => {
-  it('adds 2 and 2', () => {
+```javascript
+const add = require("./add");
+
+describe("add", () => {
+  it("adds 2 and 2", () => {
     expect(add(2, 2)).toBe(4);
   });
 });
 ```
+
 </details>
 
 ## Exercise
@@ -108,16 +112,17 @@ two numbers.
 You will write tests for the `fizzBuzz` function you've defined earlier — name the file
 containing the tests `fizzbuzz.test.js`.
 
-To complete this exercise, you'll need to: 
-  * Initialise a new project directory.
-  * Use Jest's `describe` and `it` syntax.
-  * Use Jest matchers to test the different cases above.
-  * Use `module.exports` and `require` to import the `fizzBuzz` function in the test file.
+To complete this exercise, you'll need to:
+
+- Initialise a new project directory.
+- Use Jest's `describe` and `it` syntax.
+- Use Jest matchers to test the different cases above.
+- Use `module.exports` and `require` to import the `fizzBuzz` function in the test file.
 
 Here's our acceptance criteria for this function:
 
 ```js
-> fizzBuzz(3); 
+> fizzBuzz(3);
 'Fizz'
 
 > fizzBuzz(5);
@@ -140,7 +145,6 @@ Here's our acceptance criteria for this function:
 2. In a file `fizzbuzz.test.js`, Write one test case for each acceptance criteria above,
    using one `it` block for each, and matchers to test the function's return value.
 3. Write the `fizzBuzz` function in the file `fizzbuzz.js` to the four tests pass.
-
 
 [Next Challenge](02_search_function.md)
 
