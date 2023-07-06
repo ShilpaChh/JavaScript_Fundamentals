@@ -2,6 +2,10 @@ class ShoppingBasket {
   constructor() {
     this.totalPrice = 0;
     this.items = [];
+    this.discount = 0;
+  }
+  applyDiscount(discount) {
+    discount = this.discount;
   }
   getTotalPrice() {
     return this.totalPrice;
